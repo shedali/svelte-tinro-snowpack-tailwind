@@ -1,29 +1,35 @@
-/** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
-  mount: {
-    public: '/',
-    src: '/_dist_',
+  "mount": {
+    "public": "/",
+    "src": "/_dist_"
   },
-  plugins: [
-    '@snowpack/plugin-svelte',
-    '@snowpack/plugin-dotenv',
+  "plugins": [
+    "@snowpack/plugin-svelte",
+    "@snowpack/plugin-dotenv",
+    [
+      "@snowpack/plugin-build-script",
+      {
+        "cmd": "postcss",
+        "input": [
+          ".css"
+        ],
+        "output": [
+          ".css"
+        ]
+      }
+    ],
+    [
+      "snowpack-plugin-relative-css-urls"
+    ]
   ],
-  install: [
-    /* ... */
-  ],
-  installOptions: {
-    /* ... */
+  "install": [],
+  "installOptions": {},
+  "devOptions": {
+    "port": 8080
   },
-  devOptions: {
-    /* ... */
-  },
-  buildOptions: {
-    /* ... */
-  },
-  proxy: {
-    /* ... */
-  },
-  alias: {
-    /* ... */
-  },
-};
+  "buildOptions": {},
+  "proxy": {},
+  "alias": {
+    "src": "./src"
+  }
+}
